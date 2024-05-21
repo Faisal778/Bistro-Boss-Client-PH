@@ -9,24 +9,24 @@ import img5 from "../../../assets//home/05.png";
 import img6 from "../../../assets//home/06.png";
 const Banner = () => {
   return (
-    <Carousel>
+    <Carousel className="rounded-3xl border-2 border-red-400">
       <div>
-        <img src={img1} />
+        <img className="rounded-3xl" src={img1} />
       </div>
       <div>
-        <img src={img2} />
+        <img className="rounded-3xl" src={img2} />
       </div>
       <div>
-        <img src={img3} />
+        <img className="rounded-3xl" src={img3} />
       </div>
       <div>
-        <img src={img4} />
+        <img className="rounded-3xl" src={img4} />
       </div>
       <div>
-        <img src={img5} />
+        <img className="rounded-3xl" src={img5} />
       </div>
       <div>
-        <img src={img6} />
+        <img className="rounded-3xl" src={img6} />
       </div>
     </Carousel>
   );

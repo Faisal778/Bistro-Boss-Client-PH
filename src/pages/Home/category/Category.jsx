@@ -12,7 +12,7 @@ import slide5 from "../../../assets/home/slide5.jpg";
 import SEctionTitle from "../../../components/SectionTitle/SEctionTitle";
 const Category = () => {
   return (
-    <section>
+    <section className="rounded-lg border-2 border-green-400">
       <SEctionTitle subHeading={"From 11 am to 10 pm"} heading={"Order Online"}></SEctionTitle>
       <Swiper
         slidesPerView={4}

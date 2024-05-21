@@ -5,8 +5,8 @@ import PopularMenu from "./PopularMenu/PopularMenu";
 
 const Home = () => {
   return (
-    <div>
-      <Banner></Banner>
+    <div className=""> 
+      <Banner className="rounded-3xl"></Banner>
       <Category></Category>
       <PopularMenu></PopularMenu>
     </div>
