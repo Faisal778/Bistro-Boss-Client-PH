@@ -9,7 +9,8 @@ const Main = () => {
   console.log(location);
   return (
     <div>
-      {noHeaderFooter || <Navbar></Navbar>}
+      {/* {noHeaderFooter || <Navbar></Navbar>} */}
+      <Navbar></Navbar>
       <Outlet></Outlet>
       {noHeaderFooter || <Footer></Footer>}
     </div>
