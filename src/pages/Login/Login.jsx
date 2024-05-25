@@ -3,8 +3,8 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 const Login = () => {
-  const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
 
   const { signIn } = useContext(AuthContext);
@@ -23,11 +23,28 @@ const Login = () => {
     signIn(email, password).then((result) => {
       const user = result.user;
       console.log(user);
+      Swal.fire({
+        title: "User log in successful",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
     });
   };
 
-  const handleValidateCaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleValidateCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
     if (validateCaptcha(user_captcha_value) == true) {
       setDisabled(false);
     } else {
@@ -64,10 +81,10 @@ const Login = () => {
                 <div>
                   <LoadCanvasTemplate />
                 </div>
-                <input type="text" ref={captchaRef} name="captcha" placeholder="Enter Captcha here" className="input input-bordered" required />
-                <button onClick={handleValidateCaptcha} className="btn btn-outline btn-xs m-2">
+                <input onBlur={handleValidateCaptcha} type="text"  name="captcha" placeholder="Enter Captcha here" className="input input-bordered" required />
+                {/* <button className="btn btn-outline btn-xs m-2">
                   Validate
-                </button>
+                </button> */}
               </div>
               <div className="form-control mt-6">
                 <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
