@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Providers/AuthProvider";
 const SignUp = () => {
   const {
     register,
@@ -8,7 +9,19 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const {createUser} = useContext(AuthContext);
+
+  const onSubmit = data => {
+    console.log(data)
+    createUser(data.email, data.password)
+    .then(result => {
+        const loggedUser = result.user
+        console.log(loggedUser)
+    })
+  }
+
+
+
   return (
     <>
       <Helmet>
@@ -49,7 +62,7 @@ const SignUp = () => {
                     required: true,
                     minLength: 6,
                     maxLength: 20,
-                    pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=..*[a-z]).{8}$/,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=..*[a-z])/,
                   })}
                   placeholder="password"
                   name="password"
